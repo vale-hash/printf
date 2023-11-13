@@ -7,9 +7,13 @@
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _putchar(va_list list)
+int _putchar(char c)
 {
-	char c = va_arg(ls,int)
-	write(1, &c, 1));
-	return (1);
+	if (c != NULL)
+	{
+		write(1, &c, 1));
+		return (1);
+	}else
+		return (NULL);
+
 }
