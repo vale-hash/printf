@@ -36,6 +36,28 @@ int _printf(const char *format, ...)
 				format++;
 				c_print++;
 			}
+			else if(*format == 'i')
+			{
+				int integer = va_arg(args, int);
+				printNum(integer);
+				format++;
+				c_print++;
+			}
+			else if(*format == 'd')
+			{
+				int decimal = va_arg(args, int);
+				printNum(decimal);
+				format++;
+				c_print++;
+			}
+			else if (*format =='b')
+			{
+				int binar = va_arg(args,int);
+				BinaryRecursive(binar);
+				format++;
+				c_print++;
+			}
+
 va_end(args);
 
 		}

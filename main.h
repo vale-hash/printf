@@ -3,7 +3,7 @@
 
 #include <stdarg.h>
 #include <unistd.h>
-
+void BinaryRecursive(int num);
 int _strlen(char *s);
 int _putchar(char c);
 int _printf(const char *format, ...);
