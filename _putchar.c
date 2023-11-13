@@ -9,10 +9,6 @@
  */
 int _putchar(char c)
 {
-	if (c != NULL)
-	{
-		return(write(1, &c, 1));
-	}else
-		return (NULL);
-
+		(write(1, &c, 1));
+return (1);
 }
