@@ -57,11 +57,10 @@ int _printf(const char *format, ...)
 				format++;
 				c_print++;
 			}
-
+		}
 va_end(args);
 
-		}
-
+return(c_print);
 	}
 return c_print;
 }
