@@ -1,66 +1,45 @@
 #include "main.h"
-#include "stdio.h"
+
 int _printf(const char *format, ...)
 {
-	int c_print = 0;
+	int i, j;
+	int count = 0;
+	va_list list;
+	handler hand[] = {
+		{'c', _putchar},
+		{'s', puts_str},
+		{'i', printNum},
+		{'d', printNum},
+		{'%', mod},
+		{'\0', NULL}
+	};
 
-	va_list args;
-	if (format == NULL)
-	{
-		return (-5);
-	}
-	va_start(args, format);	
-	while (*format) 
-	{
-		if (*format != '%')
-	{	
-		_putchar(*format);
-		format++;
-		c_print++;
-	} else
-		{	format++;
-			if (*format == '%')
+	va_start(list, format);
+	for (i = 0; format[i]; i++)
+		if (format[i] == '%')
+		{
+			i++;
+			for (; format[i] != '\0'; i++)
 			{
-				_putchar(*format);
-			}else if(*format == 'c')
-			{
-				char c = va_arg(args, int);
-				_putchar(c);
-				format++;
-				c_print++;
+				for (j = 0; hand[j].id != '\0'; j++)
+					if (format[i] == hand[j].id)
+					{
+						count += hand[j].fn(list);
+						break;
+					}
+				if (hand[j].id)
+					break;
 			}
-			else if(*format == 's')
-			{
-				char *str = va_arg(args, char*);
-				puts_str(str);
-				format++;
-				c_print++;
-			}
-			else if(*format == 'i')
-			{
-				int integer = va_arg(args, int);
-				printNum(integer);
-				format++;
-				c_print++;
-			}
-			else if(*format == 'd')
-			{
-				int decimal = va_arg(args, int);
-				printNum(decimal);
-				format++;
-				c_print++;
-			}
-			else if (*format =='b')
-			{
-				int binar = va_arg(args,int);
-				BinaryRecursive(binar);
-				format++;
-				c_print++;
-			}
+			if (format[i] == '\0')
+				return (-1);
 		}
-va_end(args);
+		else
+		{
+			write(1, &format[i], 1);
+			count += 1;
+		}
 
-return(c_print);
-	}
-return c_print;
+	va_end(list);
+	return (count);
 }
+

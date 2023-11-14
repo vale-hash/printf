@@ -1,22 +1,33 @@
-#include <unistd.h>
 #include "main.h"
 /**
- *printNum - function to pRINT A NUMBER TO stdout
+ *printNum - function to pRINT numNUMBER TO stdout
  *
  */
-void printNum(int num) 
+int printNum(va_list list) 
 {
-	char buffer[20];
-	int len =0;
-	do {
-        	buffer[len++] = '0' + num % 10;
-        	num /= 10;
-    } while (num > 0);
+	int num, expo = 1, len = 0;
+	unsigned int n;
+	char pr;
 
-    /*Write the string to standard output in reverse order*/
-    while (len > 0) {
-        len--;
-        write(1, &buffer[len], 1);
-    }
+	num= va_arg(list, int);
+
+	if (num< 0)
+	{
+		pr = '-';
+		len = len + write(1, &pr, 1);
+		n = num* -1;
+	}
+	else
+		n = num;
+	while (n / expo > 9)
+		expo *= 10;
+
+	while (expo != 0)
+	{
+		pr = n / expo + '0';
+		len = len + write(1, &pr, 1);
+		n = n % expo;
+		expo = expo / 10;
+	}
+	return (len);
 }
-

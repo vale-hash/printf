@@ -4,8 +4,18 @@
   *@str: - the string to be printed
   * Return: 0
   */
-void puts_str(char *str)
-{	int len;
-	len =_strlen(str);
-    (write(1, str, len));
+int puts_str(va_list list)
+{	int len, count;
+	count = 0;
+	char *STRing = va_arg(list, char *);
+
+	if(STRing == NULL)
+		STRing = "(null)";
+	else
+	{
+		len =_strlen(STRing);
+		(write(1, STRing, len));
+		count++;
+	}
+return (count);
 }
