@@ -9,10 +9,9 @@
 int puts_str(va_list list)
 {
         int i, count;
-        count = 0;
  
         char *str_buf;
-
+	count = 0;
         str_buf = va_arg(list, char *);
 
         if (str_buf == NULL)
