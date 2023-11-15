@@ -9,8 +9,9 @@ int BinaryRec(va_list list)
 {
     	int num;
 	char binaryDigit;
-	char binaryDigit;
-    	if (num > 0)
+    	
+	num = va_arg(list, int);
+	if (num > 0)
 	{
         	BinaryRec(list);
         	binaryDigit = '0' + (num % 2);
