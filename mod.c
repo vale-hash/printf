@@ -8,9 +8,9 @@
 
 int mod(va_list list)
 {
-	char c = '%'
+	char c = '%';
 
-	void list;	
+	(void) list;	
 
 	write(1, &c, 1);
 	return (1);
