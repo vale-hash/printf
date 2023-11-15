@@ -8,7 +8,7 @@
 int BinaryRec(va_list list) 
 {
     	int num;
-	num = va_arg(list, int);
+	char binaryDigit;
 	char binaryDigit;
     	if (num > 0)
 	{
