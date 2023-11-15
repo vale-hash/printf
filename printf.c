@@ -11,6 +11,7 @@ int _printf(const char *format, ...)
 		{'i', printNum},
 		{'d', printNum},
 		{'%', mod},
+		{'b', BinaryRec},
 		{'\0', NULL}
 	};
 

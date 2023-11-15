@@ -22,6 +22,6 @@ int _putchar(va_list list);
 int _printf(const char *format, ...);
 int puts_str(va_list list);
 int printNum(va_list list);
-
+int BinaryRec(va_list list);
 
 #endif
