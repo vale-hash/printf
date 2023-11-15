@@ -1,4 +1,10 @@
 #include "main.h"
+/**
+ *BinaryRex - function to return binary
+ * @list: numbers to return
+ * Return : binsty digit.
+ */
+
 int BinaryRec(va_list list) 
 {
     	int num;
